@@ -1,0 +1,3 @@
+- All popups have to be app-native and fit with the theme of the app. Do not use IOS popups.
+- Always remember that the app is in IOS. Leave space for IOS elements such as menu bar and bottom space of the scren.
+- Always remember that the elements on the bottom of the screen must be at least shifted up 10px
