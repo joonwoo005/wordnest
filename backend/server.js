@@ -134,25 +134,46 @@ app.post('/api/etymology', async (req, res) => {
       messages: [
         {
           role: 'user',
-          content: `Analyze the Chinese character(s) or word: "${chinese}"
+          content: `I'm going to give you a Chinese word. Explain the etymology and how the radicals/components work together to form meaning.
 
-Extract the character components and explain what each component represents. Then provide the overall meaning.
+Word: "${chinese}"
+
+For each character in the word:
+1. Show the character with its pinyin and core meaning
+2. List its components/radicals
+3. For each component, identify if it is SEMANTIC (contributes to meaning) or PHONETIC (contributes to pronunciation)
+4. Only provide meaning explanation for SEMANTIC components
+5. For PHONETIC components, just note they provide the sound
+
+In the final description, include:
+- The combined meaning of the word
+- Modern usage and connotations in today's society
+- Any subtle implications or contexts where this word is commonly used
+
+Example format for 幼稚:
+幼 (yòu) — "young, infant"
+Components:
+- 幺 (yāo) — semantic. Depicts a tiny silk thread, representing "small/tiny"
+- 力 (lì) — phonetic. Provides the sound
+
+稚 (zhì) — "young, immature"
+Components:
+- 禾 (hé) — semantic. The grain/rice plant radical
+- 隹 (zhuī) — phonetic. Depicts a short-tailed bird, provides the sound "zhì"
+
+Full meaning: Childish, immature, naive; describes behaviour or thinking that lacks sophistication, often with a slightly negative connotation.
 
 Respond ONLY with valid JSON in this exact format (no markdown, no code blocks):
 {
   "components": [
     {
-      "character": "单字",
-      "meaning": "short meaning",
-      "explanation": "explanation of what this character/component represents and its significance"
+      "character": "字",
+      "meaning": "pinyin — core meaning",
+      "explanation": "List each radical/component with semantic/phonetic label and explanation"
     }
   ],
-  "fullMeaning": "overall meaning and usage of the complete word"
-}
-
-If this is a single character, break it down into its radical and stroke components if possible.
-If this is a multi-character word, break it down by individual characters.
-Be concise but informative.`,
+  "fullMeaning": "Combined meaning + modern usage, connotations, and contexts in today's society"
+}`,
         },
       ],
     });
